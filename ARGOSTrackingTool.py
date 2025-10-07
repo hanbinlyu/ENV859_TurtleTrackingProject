@@ -9,6 +9,9 @@
 # Date:   Fall 2025
 #--------------------------------------------------------------
 
+#Ask user for a date
+user_date = input("Enter a date: ")
+
 #Create a variable pointing to the data file
 file_name = './Data/Raw/Sara.txt'
 
@@ -39,12 +42,14 @@ while lineString:
     obs_lat = lineData[6]
     obs_lon = lineData[7]
 
-    #Add items to dictonaries
-    date_dict[record_id] = obs_date
-    location_dict[record_id] = (obs_lat,obs_lon)
+    #Determine if location class criteria is met
+    if obs_lc in ("1","2","3"):
+        #Add items to ditonaries
+        date_dict[record_id] = obs_date
+        location_dict[record_id] = (obs_lat,obs_lon)
    
     #Print the location of sara
-    print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
+    #print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
 
     #Read next line
     lineString = file_object.readline()
